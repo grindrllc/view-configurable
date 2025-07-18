@@ -34,7 +34,7 @@ public struct ViewConfigurableMacro: ExtensionMacro {
                 Diagnostic(node: node, message: warning, fixIt: FixIt(message: fixitMessage, changes: [
                     .replaceTrailingTrivia(token: declaration.memberBlock.leftBrace, newTrivia: .newlines(2) +
                     """
-                    \(scopeModifier)struct ViewConfiguration {
+                    private struct ViewConfiguration {
                         // TODO: Add configuration properties here
                     }
                     """ + .newline
@@ -126,7 +126,6 @@ public struct ViewConfigurableMacro: ExtensionMacro {
 
         return [syntax]
     }
-
 }
 
 private extension ViewConfigurableMacro {
