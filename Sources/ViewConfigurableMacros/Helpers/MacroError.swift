@@ -11,7 +11,7 @@ struct MacroError: CustomStringConvertible, Error {
     let message: String
 
     init(_ message: String) {
-        self.message = "GRND: \(message)"
+        self.message = "VC Macro Error: \(message)"
     }
 
     var description: String {

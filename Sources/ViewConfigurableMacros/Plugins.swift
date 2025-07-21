@@ -10,7 +10,7 @@ import SwiftCompilerPlugin
 import SwiftSyntaxMacros
 
 @main
-struct GrindrMacrosPlugin: CompilerPlugin {
+struct ViewConfigurableMacrosPlugin: CompilerPlugin {
     let providingMacros: [Macro.Type] = [
         ViewConfigurableMacro.self,
     ]

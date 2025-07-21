@@ -1,14 +1,3 @@
-//
-// Copyright 2025 by Grindr LLC,
-// All rights reserved.
-//
-// This software is confidential and proprietary information of
-// Grindr LLC ("Confidential Information").
-// You shall not disclose such Confidential Information and shall use
-// it only in accordance with the terms of the license agreement
-// you entered into with Grindr LLC.
-//
-
 import Foundation
 import SwiftCompilerPlugin
 import SwiftDiagnostics
@@ -25,7 +14,7 @@ public struct ViewConfigurableMacro: ExtensionMacro {
         guard let configStruct = declaration.memberBlock.members
             .compactMap({ $0.decl.as(StructDeclSyntax.self) })
             .first(where: { $0.name.text == "ViewConfiguration" }) else {
-            let warning = GrindrMacrosWarning(
+            let warning = MacroWarning(
                 .missingViewConfigurationStruct,
                 message: "Your view must have a struct called ViewConfiguration",
                 severity: .warning)
@@ -55,7 +44,7 @@ public struct ViewConfigurableMacro: ExtensionMacro {
                 $0.bindings.first?.pattern.as(IdentifierPatternSyntax.self)?.identifier.text == "viewConfig"
             }) else {
 
-            let warning = GrindrMacrosWarning(.missingConfigVar,
+            let warning = MacroWarning(.missingConfigVar,
                                               message: "Your view must have a struct called ViewConfiguration",
                                               severity: .warning)
             let fixitMessage = MacroFixItMessage("Add member")
